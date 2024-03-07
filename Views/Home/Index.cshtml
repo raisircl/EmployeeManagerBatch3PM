@@ -1,0 +1,47 @@
+﻿@model List<Employee>
+@{
+    Layout = "_layoutUma";
+    int x = 1;
+    int y = ViewBag.No;
+}
+ // Model
+@foreach(Employee emp in Model)
+    {
+        <p>
+            @emp.Name
+        </p>    
+    }
+<h2>
+    @ViewData["Title"]
+</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Employee emp in Model)
+        {
+            <tr>
+                <th scope="row">@x</th>
+            <td>@emp.EmployeeId</td>
+            <td>@emp.Name</td>
+            <td>@emp.Department</td>
+            <td><a href="home/details/@emp.EmployeeId">Detail</a></td>
+            </tr>
+            x++;
+        }
+
+    </tbody>
+</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
