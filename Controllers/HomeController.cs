@@ -22,10 +22,31 @@ namespace EmployeeManager.Controllers
             List<Employee> employees=repo.GetAll();
             return View(employees);
         }
-        public IActionResult Details(int id)
+        public ViewResult Details(int id)
         {
             Employee emp = repo.Get(id);
             return View(emp);
+        }
+        public ViewResult Detail(int id)
+        {
+            Employee emp = repo.Get(id);
+            return View(emp);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();  
+        }
+        [HttpPost]
+        public IActionResult Create(Employee emp)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.Add(emp);
+               return  RedirectToAction("Index");
+            }
+
+            return View();
         }
         public IActionResult Privacy()
         {

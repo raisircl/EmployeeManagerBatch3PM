@@ -1,0 +1,25 @@
+﻿@model EmployeeManager.Models.Employee 
+
+@{
+    
+    ViewData["Title"] = "Detail";
+   
+}
+
+<h1>Detail</h1>
+@* @Model.Name
+@Model.Department
+ *@
+ <div>
+    <h4>Employee</h4>
+    <hr />
+   <div class="card" style="width: 18rem;">
+  
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+    <p class="card-text">@Model.Department</p>
+    <a href="home/edit/@Model.EmployeeId" class="btn btn-primary">Edit</a>
+  </div>
+</div>
+</div>
+
