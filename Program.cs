@@ -1,11 +1,20 @@
 using EmployeeManager.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<MyDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conn"));
+});
+
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IEmployeeRepo,EmployeeRepo>();    
-builder.Services.AddSingleton<IDeptRepo,DeptRepo>();    
+builder.Services.AddSingleton<IEmployeeRepo,EmployeeRepo>();
+//builder.Services.AddSingleton<IDeptRepo, DeptRepo>();
+builder.Services.AddScoped<IDeptRepo, DeptRepoSql>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
