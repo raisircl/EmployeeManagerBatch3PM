@@ -6,7 +6,7 @@
        Department GetDepartment(int id);
        Department Add(Department department);  
        Department Update(Department department);
-       Department Delete(int id);
+       void Delete(int id);
 
 
     }

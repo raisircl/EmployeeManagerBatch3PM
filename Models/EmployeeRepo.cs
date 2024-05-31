@@ -7,10 +7,10 @@
             _employees = new List<Employee>()
             {
 
-                new Employee() { EmployeeId = 100, Name = "Ram", Department = "SW" },
-                new Employee() { EmployeeId = 101, Name = "Abhi", Department = ".Net" },
-                new Employee() { EmployeeId = 102, Name = "Iqbal", Department = "MAUI" },
-                new Employee() { EmployeeId = 103, Name = "Mohit", Department = "DEVOPS" }
+                new Employee() { EmployeeId = 100, Name = "Ram", Department = new Department(){ DepartmentId=1, DeptName="SW", Loc="SW" } },
+                new Employee() { EmployeeId = 101, Name = "Abhi", Department = new Department() },
+                new Employee() { EmployeeId = 102, Name = "Iqbal", Department = new Department() },
+                new Employee() { EmployeeId = 103, Name = "Mohit", Department =new Department() }
             };
             
 

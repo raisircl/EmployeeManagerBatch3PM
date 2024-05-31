@@ -18,15 +18,15 @@ namespace EmployeeManager.Models
             return department;
         }
 
-        public Department Delete(int id)
+        public void Delete(int id)
         {
             var dept= deptList.FirstOrDefault(x => x.DepartmentId == id);
             if (dept != null)
             {
                 deptList.Remove(dept);
-                return dept;
+                
             }
-            return null;
+           
         }
 
         public List<Department> GetDepartments()

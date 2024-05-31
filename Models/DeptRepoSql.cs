@@ -7,7 +7,7 @@ namespace EmployeeManager.Models
 
         public DeptRepoSql(MyDbContext context)
         {
-            this.context = context;
+            this.context = context; //DI
         }
         public Department Add(Department department)
         {
@@ -16,9 +16,14 @@ namespace EmployeeManager.Models
            return department;
         }
 
-        public Department Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+           var dept= context.Departments.FirstOrDefault(dept => dept.DepartmentId == id);
+            if (dept != null) { 
+               context.Departments.Remove(dept);
+               context.SaveChanges();
+            }
+           
         }
 
         public Department GetDepartment(int id)
@@ -33,7 +38,19 @@ namespace EmployeeManager.Models
 
         public Department Update(Department department)
         {
-            throw new NotImplementedException();
+            //var dept = context.Departments.FirstOrDefault(dept => dept.DepartmentId == department.DepartmentId);
+            //if (dept != null)
+            //{
+            //    dept.DeptName = department.DeptName;
+            //    dept.Loc=department.Loc;
+                
+            //    context.SaveChanges();
+            //}
+            var dept2 = context.Departments.Attach(department);
+            dept2.State=Microsoft.EntityFrameworkCore.EntityState.Modified; 
+            context.SaveChanges();
+            return department;  
+
         }
     }
 }

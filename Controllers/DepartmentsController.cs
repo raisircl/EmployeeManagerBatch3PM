@@ -50,7 +50,7 @@ namespace EmployeeManager.Controllers
         }
         public IActionResult Delete(int id)
         {
-            var dept = deptRepo.Delete(id);
+             deptRepo.Delete(id);
             return RedirectToAction("Index");
         }
     }
